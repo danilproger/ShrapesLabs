@@ -112,20 +112,10 @@ namespace CS_lab
                 switch (nextStep)
                 {
                     case WormStep.Move:
-                        if (!_world.IsWormOnPosition(newPosition))
-                        {
-                            worm.Position = newPosition;
-                        }
-
+                        worm.Move(_world, newPosition);
                         break;
                     case WormStep.Spawn:
-                        if (!_world.IsWormOnPosition(newPosition) && !_world.IsFoodOnPosition(newPosition) &&
-                            worm.EnableToSpawn())
-                        {
-                            var newWorm = new Worm(_nameGenerator.NextName(), newPosition, _wormStrategy);
-                            _world.AddWorm(newWorm);
-                        }
-
+                        worm.Spawn(_world, _nameGenerator.NextName(), newPosition, _wormStrategy);
                         break;
                     case WormStep.Nothing:
                         break;

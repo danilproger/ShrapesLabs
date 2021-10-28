@@ -60,5 +60,24 @@ namespace CS_lab.Models
         {
             return _health > 10;
         }
+
+        public void Move(World world, Position newPosition)
+        {
+            if (!world.IsWormOnPosition(newPosition))
+            {
+                _position = newPosition;
+            }
+        }
+
+        public void Spawn(World world, string nextName, Position newPosition, IWormStrategy wormStrategy)
+        {
+            if (world.IsWormOnPosition(newPosition) || world.IsFoodOnPosition(newPosition) || !EnableToSpawn())
+            {
+                return;
+            }
+            
+            var newWorm = new Worm(nextName, newPosition, wormStrategy);
+            world.AddWorm(newWorm);
+        }
     }
 }

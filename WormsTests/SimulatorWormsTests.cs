@@ -32,10 +32,7 @@ namespace WormsTests
             var oldPosition = _worm.Position;
             var newPosition = _worm.Position.DirectedPosition(nextDirection);
 
-            if (!_world.IsWormOnPosition(newPosition))
-            {
-                _worm.Position = newPosition;
-            }
+            _worm.Move(_world, newPosition);
             
             Assert.AreNotEqual(oldPosition, _worm.Position);
         }
@@ -51,10 +48,7 @@ namespace WormsTests
             var busyWorm = new Worm("2", newPosition, _wormStrategy);
             _world.AddWorm(busyWorm);
 
-            if (!_world.IsWormOnPosition(newPosition))
-            {
-                _worm.Position = newPosition;
-            }
+            _worm.Move(_world, newPosition);
             
             Assert.AreEqual(oldPosition, _worm.Position);
         }
@@ -72,16 +66,58 @@ namespace WormsTests
 
             var oldWormHealth = _worm.Health;
 
-            if (!_world.IsWormOnPosition(newPosition))
-            {
-                _worm.Position = newPosition;
-            }
+            _worm.Move(_world, newPosition);
             
             _world.CheckWormsFoods();
             
             Assert.AreNotEqual(oldPosition, _worm.Position);
             Assert.AreEqual(_worm.Position, food.Position);
             Assert.IsTrue(oldWormHealth < _worm.Health);
+        }
+
+        [Test]
+        public void SuccessfulSpawn()
+        {
+            var oldWormsCount = _world.Worms.Count;
+            
+            _worm.IncrementHealth(1);
+            var (_, nextDirection) = _wormStrategy.NextStep(_worm, _world, 0);
+            var newPosition = _worm.Position.DirectedPosition(nextDirection);
+            
+            _worm.Spawn(_world, "2", newPosition, _wormStrategy);
+            
+            Assert.IsTrue(_world.Worms.Count > oldWormsCount);
+        }
+
+        
+        [Test]
+        public void UnsuccessfulSpawnNotEnoughHealth()
+        {
+            var oldWormsCount = _world.Worms.Count;
+            
+            var (_, nextDirection) = _wormStrategy.NextStep(_worm, _world, 0);
+            var newPosition = _worm.Position.DirectedPosition(nextDirection);
+            
+            _worm.Spawn(_world, "2", newPosition, _wormStrategy);
+            
+            Assert.AreEqual(oldWormsCount, _world.Worms.Count);
+        }
+        
+        [Test]
+        public void UnsuccessfulSpawnNotBusyCell()
+        {
+            var oldWormsCount = _world.Worms.Count;
+            
+            _worm.IncrementHealth(1);
+            var (_, nextDirection) = _wormStrategy.NextStep(_worm, _world, 0);
+            var newPosition = _worm.Position.DirectedPosition(nextDirection);
+
+            var food = new Food(newPosition);
+            _world.AddFood(food);
+            
+            _worm.Spawn(_world, "2", newPosition, _wormStrategy);
+            
+            Assert.AreEqual(oldWormsCount, _world.Worms.Count);
         }
     }
 }
