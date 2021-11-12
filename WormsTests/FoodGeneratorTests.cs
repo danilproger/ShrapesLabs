@@ -24,7 +24,7 @@ namespace WormsTests
         {
             for (int i = 0; i < 10; ++i)
             {
-                var food = _foodGenerator.GenerateFood(_world);
+                var food = _foodGenerator.GenerateFood(_world, i);
                 _world.AddFood(food);
             }
 

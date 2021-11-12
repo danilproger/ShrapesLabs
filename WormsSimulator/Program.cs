@@ -1,4 +1,5 @@
-﻿using CS_lab.FoodGenerator;
+﻿using System;
+using CS_lab.FoodGenerator;
 using CS_lab.GameStateWriter;
 using CS_lab.NameGenerator;
 using CS_lab.WormStrategy;
@@ -21,10 +22,19 @@ namespace CS_lab
                 .ConfigureServices((hostContext, services) =>
                 {
                     services.AddHostedService<SimulatorService>();
-                    services.AddScoped<IFoodGenerator, NormallyDistributedFoodGenerator>();
+                    
                     services.AddScoped<INameGenerator, RandomNameGenerator>();
                     services.AddScoped<IWormStrategy, NearestFoodStrategy>();
                     services.AddScoped<IGameStateWriter>(_ => new GameStateFileWriter("game_logs.txt"));
+
+                    if (args.Length > 0)
+                    {
+                        services.AddScoped<IFoodGenerator>(_ => new BehaviorFoodGenerator(args[0]));
+                    }
+                    else
+                    {
+                        services.AddScoped<IFoodGenerator, NormallyDistributedFoodGenerator>();
+                    }
                 });
         }
     }

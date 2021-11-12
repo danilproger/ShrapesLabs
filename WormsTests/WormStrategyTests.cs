@@ -29,7 +29,7 @@ namespace WormsTests
         [Test]
         public void MoveToNearestFood()
         {
-            var food = _foodGenerator.GenerateFood(_world);
+            var food = _foodGenerator.GenerateFood(_world, 0);
             _world.AddFood(food);
 
             var oldDistance = Math.Abs(_worm.Position.X - food.Position.X) +

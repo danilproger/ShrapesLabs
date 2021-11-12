@@ -66,7 +66,7 @@ namespace CS_lab
 
         private void GenerateFood()
         {
-            var food = _foodGenerator.GenerateFood(_world);
+            var food = _foodGenerator.GenerateFood(_world, _gameStep);
             _world.AddFood(food);
         }
 
@@ -129,17 +129,8 @@ namespace CS_lab
         {
             _appLifetime.ApplicationStarted.Register(() =>
             {
-                Run( () =>
-                {
-                    try
-                    {
-                        StartGame();
-                    }
-                    finally
-                    {
-                        _appLifetime.StopApplication();
-                    }
-                }, cancellationToken);
+                StartGame();
+                _appLifetime.StopApplication();
             });
             return CompletedTask;
         }

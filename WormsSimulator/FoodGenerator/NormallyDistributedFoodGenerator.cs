@@ -5,7 +5,7 @@ namespace CS_lab.FoodGenerator
 {
     public class NormallyDistributedFoodGenerator : IFoodGenerator
     {
-        public Food GenerateFood(World world)
+        public Food GenerateFood(World world, int gameStep)
         {
             int x, y;
 
