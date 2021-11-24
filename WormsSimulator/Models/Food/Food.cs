@@ -5,35 +5,24 @@ namespace CS_lab.Models
 {
     public class Food
     {
-        private readonly string _id;
-        private readonly Position _position;
-        private int _health;
+        public Position Position { get; }
 
-        public Position Position
-        {
-            get => _position;
-        }
-
-        public int Health
-        {
-            get => _health;
-        }
+        public int Health { get; private set; }
 
         public Food(Position position)
         {
-            _id = Guid.NewGuid().ToString();
-            _health = 10;
-            _position = position;
+            Health = 10;
+            Position = position;
         }
 
         public void EatFood()
         {
-            _health = 0;
+            Health = 0;
         }
 
         public void DecreaseHealth()
         {
-            _health--;
+            Health--;
         }
     }
 }

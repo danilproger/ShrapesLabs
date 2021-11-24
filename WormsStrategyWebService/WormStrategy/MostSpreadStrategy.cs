@@ -1,13 +1,18 @@
 ﻿using System;
 using System.Collections.Generic;
-using CS_lab.Models;
+using WormsStrategyWebService.Models;
 
-namespace CS_lab.WormStrategy
+namespace WormsStrategyWebService.WormStrategy
 {
-    public class NearestFoodStrategy : IWormStrategy
+    public class MostSpreadStrategy: IWormStrategy
     {
         public WormGameStep NextStep(Worm worm, World world, int gameState)
         {
+            if (worm.Health > 15)
+            {
+                return new WormGameStep(WormStep.Spawn, Direction.Right);
+            }
+            
             var (x, y) = NearestFoodPosition(worm, world.Foods);
             if (worm.Position.X < x) return new WormGameStep(WormStep.Move, Direction.Right);
             if (worm.Position.X > x) return new WormGameStep(WormStep.Move, Direction.Left);

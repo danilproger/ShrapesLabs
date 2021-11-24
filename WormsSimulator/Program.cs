@@ -24,7 +24,8 @@ namespace CS_lab
                     services.AddHostedService<SimulatorService>();
                     
                     services.AddScoped<INameGenerator, RandomNameGenerator>();
-                    services.AddScoped<IWormStrategy, NearestFoodStrategy>();
+                    services.AddScoped<IWormStrategy>(_ => new RemoteWormStrategy("localhost", "5001"));
+                    //services.AddScoped<IWormStrategy>(_ => new NearestFoodStrategy());
                     services.AddScoped<IGameStateWriter>(_ => new GameStateFileWriter("game_logs.txt"));
 
                     if (args.Length > 0)

@@ -24,14 +24,14 @@ namespace CS_lab.WormStrategy
             };
         }
 
-        public (WormStep, Direction) NextStep(Worm worm, World world, int gameState)
+        public WormGameStep NextStep(Worm worm, World world, int gameState)
         {
             if (gameState == 0)
             {
-                return (WormStep.Move, Direction.Right);
+                return new WormGameStep(WormStep.Move, Direction.Right);
             }
 
-            return (WormStep.Move, _pathAroundZero[_steps++ % _pathAroundZero.Count]);
+            return new WormGameStep(WormStep.Move, _pathAroundZero[_steps++ % _pathAroundZero.Count]);
         }
     }
 }

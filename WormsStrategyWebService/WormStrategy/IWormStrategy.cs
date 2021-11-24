@@ -1,6 +1,6 @@
-﻿using CS_lab.Models;
+﻿using WormsStrategyWebService.Models;
 
-namespace CS_lab.WormStrategy
+namespace WormsStrategyWebService.WormStrategy
 {
     public interface IWormStrategy
     {

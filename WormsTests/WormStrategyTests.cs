@@ -35,8 +35,8 @@ namespace WormsTests
             var oldDistance = Math.Abs(_worm.Position.X - food.Position.X) +
                               Math.Abs(_worm.Position.Y - food.Position.Y);
             
-            var (_, nextDirection) = _wormStrategy.NextStep(_worm, _world, 0);
-            var newPosition = _worm.Position.DirectedPosition(nextDirection);
+            var nextGameStep = _wormStrategy.NextStep(_worm, _world, 0);
+            var newPosition = _worm.Position.DirectedPosition(nextGameStep.Direction);
 
             _worm.Move(_world, newPosition);
             

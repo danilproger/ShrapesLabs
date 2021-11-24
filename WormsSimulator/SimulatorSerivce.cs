@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.IO;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using CS_lab.FoodGenerator;
@@ -104,12 +105,12 @@ namespace CS_lab
 
         private void AskWorms()
         {
-            foreach (var worm in _worms)
+            foreach (var worm in _worms.ToList())
             {
-                var (nextStep, nextDirection) = worm.NextStep(_world, _gameStep);
-                var newPosition = worm.Position.DirectedPosition(nextDirection);
+                var nextGameStep = worm.NextStep(_world, _gameStep);
+                var newPosition = worm.Position.DirectedPosition(nextGameStep.Direction);
 
-                switch (nextStep)
+                switch (nextGameStep.WormStep)
                 {
                     case WormStep.Move:
                         worm.Move(_world, newPosition);
@@ -129,7 +130,9 @@ namespace CS_lab
         {
             _appLifetime.ApplicationStarted.Register(() =>
             {
+                Console.WriteLine(_world.Worms.Count);
                 StartGame();
+                Console.WriteLine(_world.Worms.Count);
                 _appLifetime.StopApplication();
             });
             return CompletedTask;

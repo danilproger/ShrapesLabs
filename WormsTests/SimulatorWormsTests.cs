@@ -27,10 +27,10 @@ namespace WormsTests
         [Test]
         public void MoveEmptyCell()
         {
-            var (_, nextDirection) = _wormStrategy.NextStep(_worm, _world, 0);
+            var nextGameStep = _wormStrategy.NextStep(_worm, _world, 0);
 
             var oldPosition = _worm.Position;
-            var newPosition = _worm.Position.DirectedPosition(nextDirection);
+            var newPosition = _worm.Position.DirectedPosition(nextGameStep.Direction);
 
             _worm.Move(_world, newPosition);
             
@@ -40,10 +40,10 @@ namespace WormsTests
         [Test]
         public void MoveBusyCell()
         {
-            var (_, nextDirection) = _wormStrategy.NextStep(_worm, _world, 0);
+            var nextGameStep = _wormStrategy.NextStep(_worm, _world, 0);
 
             var oldPosition = _worm.Position;
-            var newPosition = _worm.Position.DirectedPosition(nextDirection);
+            var newPosition = _worm.Position.DirectedPosition(nextGameStep.Direction);
 
             var busyWorm = new Worm("2", newPosition, _wormStrategy);
             _world.AddWorm(busyWorm);
@@ -56,10 +56,10 @@ namespace WormsTests
         [Test]
         public void MoveFoodCell()
         {
-            var (_, nextDirection) = _wormStrategy.NextStep(_worm, _world, 0);
+            var nextGameStep = _wormStrategy.NextStep(_worm, _world, 0);
 
             var oldPosition = _worm.Position;
-            var newPosition = _worm.Position.DirectedPosition(nextDirection);
+            var newPosition = _worm.Position.DirectedPosition(nextGameStep.Direction);
 
             var food = new Food(newPosition);
             _world.AddFood(food);
@@ -81,8 +81,8 @@ namespace WormsTests
             var oldWormsCount = _world.Worms.Count;
             
             _worm.IncrementHealth(1);
-            var (_, nextDirection) = _wormStrategy.NextStep(_worm, _world, 0);
-            var newPosition = _worm.Position.DirectedPosition(nextDirection);
+            var nextGameStep = _wormStrategy.NextStep(_worm, _world, 0);
+            var newPosition = _worm.Position.DirectedPosition(nextGameStep.Direction);
             
             _worm.Spawn(_world, "2", newPosition, _wormStrategy);
             
@@ -95,8 +95,8 @@ namespace WormsTests
         {
             var oldWormsCount = _world.Worms.Count;
             
-            var (_, nextDirection) = _wormStrategy.NextStep(_worm, _world, 0);
-            var newPosition = _worm.Position.DirectedPosition(nextDirection);
+            var nextGameStep = _wormStrategy.NextStep(_worm, _world, 0);
+            var newPosition = _worm.Position.DirectedPosition(nextGameStep.Direction);
             
             _worm.Spawn(_world, "2", newPosition, _wormStrategy);
             
@@ -109,8 +109,8 @@ namespace WormsTests
             var oldWormsCount = _world.Worms.Count;
             
             _worm.IncrementHealth(1);
-            var (_, nextDirection) = _wormStrategy.NextStep(_worm, _world, 0);
-            var newPosition = _worm.Position.DirectedPosition(nextDirection);
+            var nextGameStep = _wormStrategy.NextStep(_worm, _world, 0);
+            var newPosition = _worm.Position.DirectedPosition(nextGameStep.Direction);
 
             var food = new Food(newPosition);
             _world.AddFood(food);
