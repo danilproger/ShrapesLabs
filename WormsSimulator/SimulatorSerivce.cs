@@ -130,9 +130,9 @@ namespace CS_lab
         {
             _appLifetime.ApplicationStarted.Register(() =>
             {
-                Console.WriteLine(_world.Worms.Count);
+                Console.WriteLine($"Worms as start: {_world.Worms.Count}");
                 StartGame();
-                Console.WriteLine(_world.Worms.Count);
+                Console.WriteLine($"Worms as end: {_world.Worms.Count}");
                 _appLifetime.StopApplication();
             });
             return CompletedTask;

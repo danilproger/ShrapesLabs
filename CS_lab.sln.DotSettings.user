@@ -1,0 +1,19 @@
+﻿<wpf:ResourceDictionary xml:space="preserve" xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:s="clr-namespace:System;assembly=mscorlib" xmlns:ss="urn:shemas-jetbrains-com:settings-storage-xaml" xmlns:wpf="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+	<s:String x:Key="/Default/Environment/UnitTesting/UnitTestSessionStore/Sessions/=ac792a7d_002D72e7_002D46ad_002Da2cf_002D46427c3ba018/@EntryIndexedValue">&lt;SessionState ContinuousTestingMode="0" IsActive="True" Name="MoveEmptyCell" xmlns="urn:schemas-jetbrains-com:jetbrains-ut-session"&gt;&#xD;
+  &lt;Or&gt;&#xD;
+    &lt;TestAncestor&gt;&#xD;
+      &lt;TestId&gt;NUnit3x::0A798E99-7545-43E7-9FF3-3AFBF037F4A1::net5.0::WormsTests.SimulatorWormsTests&lt;/TestId&gt;&#xD;
+      &lt;TestId&gt;NUnit3x::0A798E99-7545-43E7-9FF3-3AFBF037F4A1::net5.0::WormsTests.NamesGeneratorTests.RandomNames&lt;/TestId&gt;&#xD;
+      &lt;TestId&gt;NUnit3x::0A798E99-7545-43E7-9FF3-3AFBF037F4A1::net5.0::WormsTests.FoodGeneratorTests.UniqueFoods&lt;/TestId&gt;&#xD;
+      &lt;TestId&gt;NUnit3x::0A798E99-7545-43E7-9FF3-3AFBF037F4A1::net5.0::WormsTests.WormStrategyTests.MoveToNearestFood&lt;/TestId&gt;&#xD;
+      &lt;TestId&gt;NUnit3x::0A798E99-7545-43E7-9FF3-3AFBF037F4A1::net5.0::WormsTests.WormStrategyTests&lt;/TestId&gt;&#xD;
+      &lt;TestId&gt;NUnit3x::0A798E99-7545-43E7-9FF3-3AFBF037F4A1::net5.0::WormsTests.NamesGeneratorTests&lt;/TestId&gt;&#xD;
+      &lt;TestId&gt;xUnit::8E71ED11-36A2-4D87-AC99-576319AE04FE::net5.0::BehaviorTests.BehaviorWriterTests.Test1&lt;/TestId&gt;&#xD;
+      &lt;TestId&gt;xUnit::8E71ED11-36A2-4D87-AC99-576319AE04FE::net5.0::BehaviorTests.BehaviorWriterTests&lt;/TestId&gt;&#xD;
+      &lt;TestId&gt;xUnit::8E71ED11-36A2-4D87-AC99-576319AE04FE::net5.0::BehaviorTests.BehaviorReaderTests.ReadEmptyBehavior&lt;/TestId&gt;&#xD;
+      &lt;TestId&gt;xUnit::8E71ED11-36A2-4D87-AC99-576319AE04FE::net5.0::BehaviorTests.BehaviorReaderTests.ReadBehavior&lt;/TestId&gt;&#xD;
+      &lt;TestId&gt;xUnit::8E71ED11-36A2-4D87-AC99-576319AE04FE::net5.0::BehaviorTests.BehaviorReaderTests&lt;/TestId&gt;&#xD;
+    &lt;/TestAncestor&gt;&#xD;
+    &lt;Project Location="D:\Programming\Rider\CS_lab\WormsTests" Presentation="&amp;lt;WormsTests&amp;gt;" /&gt;&#xD;
+  &lt;/Or&gt;&#xD;
+&lt;/SessionState&gt;</s:String></wpf:ResourceDictionary>

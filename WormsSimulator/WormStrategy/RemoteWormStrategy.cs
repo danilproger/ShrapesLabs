@@ -12,7 +12,7 @@ namespace CS_lab.WormStrategy
         
         public RemoteWormStrategy(string ip, string port)
         {
-            _baseUrl = $"https://{ip}:{port}/";
+            _baseUrl = $"http://{ip}:{port}/";
         }
         public WormGameStep NextStep(Worm worm, World world, int gameState)
         {
