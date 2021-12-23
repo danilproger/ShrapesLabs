@@ -17,6 +17,32 @@ namespace WormsStrategyWebService.Models
             _x = x;
             _y = y;
         }
+        
+        public Position DirectedPosition(Direction direction)
+        {
+            var newX = _x;
+            var newY = _y;
+
+            switch (direction)
+            {
+                case Direction.Up:
+                    newY++;
+                    break;
+                case Direction.Down:
+                    newY--;
+                    break;
+                case Direction.Left:
+                    newX--;
+                    break;
+                case Direction.Right:
+                    newX++;
+                    break;
+            }
+
+            var newPosition = new Position(newX, newY);
+
+            return newPosition;
+        }
 
         public override bool Equals(object obj)
         {
