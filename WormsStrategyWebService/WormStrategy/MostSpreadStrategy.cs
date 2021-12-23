@@ -8,18 +8,18 @@ namespace WormsStrategyWebService.WormStrategy
     {
         public WormGameStep NextStep(Worm worm, World world, int gameState)
         {
-            if (worm.Health > 15)
+            if (worm.Health > 13)
             {
-                return new WormGameStep(WormStep.Spawn, Direction.Right);
+                return new WormGameStep(Direction.Right, true);
             }
             
             var (x, y) = NearestFoodPosition(worm, world.Foods);
-            if (worm.Position.X < x) return new WormGameStep(WormStep.Move, Direction.Right);
-            if (worm.Position.X > x) return new WormGameStep(WormStep.Move, Direction.Left);
-            if (worm.Position.Y > y) return new WormGameStep(WormStep.Move, Direction.Down);
-            if (worm.Position.Y < y) return new WormGameStep(WormStep.Move, Direction.Up);
+            if (worm.Position.X < x) return new WormGameStep(Direction.Right,false);
+            if (worm.Position.X > x) return new WormGameStep(Direction.Left, false);
+            if (worm.Position.Y > y) return new WormGameStep(Direction.Down, false);
+            if (worm.Position.Y < y) return new WormGameStep(Direction.Up, false);
 
-            return new WormGameStep(WormStep.Nothing, Direction.Nothing);
+            return new WormGameStep();
         }
 
         private (int, int) NearestFoodPosition(Worm worm, List<Food> foods)

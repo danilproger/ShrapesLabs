@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Drawing;
+using System.Text.Json.Serialization;
 
 namespace CS_lab.Models
 {
@@ -7,8 +8,9 @@ namespace CS_lab.Models
     {
         private readonly int _x;
         private readonly int _y;
+        [JsonPropertyName("x")]
         public int X { get => _x; }
-
+        [JsonPropertyName("y")]
         public int Y { get => _y; }
 
         public Position(int x, int y)

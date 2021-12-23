@@ -1,18 +1,24 @@
-﻿namespace WormsStrategyWebService.Models
+﻿using System.Text.Json.Serialization;
+
+namespace WormsStrategyWebService.Models
 {
     public class WormGameStep
     {
-        public WormStep WormStep { get; set; }
-        public Direction Direction { get; set; }
+        [JsonPropertyName("direction")]
+        public string Direction { get; set; }
+        [JsonPropertyName("split")]
+        public bool Split { get; set; }
         
         public WormGameStep()
         {
+            Direction = "Up";
+            Split = false;
         }
 
-        public WormGameStep(WormStep wormStep, Direction direction)
+        public WormGameStep(Direction direction, bool split)
         {
-            WormStep = wormStep;
-            Direction = direction;
+            Direction = direction.ToString();
+            Split = split;
         }
     }
 }

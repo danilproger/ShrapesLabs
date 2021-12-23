@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using System.Diagnostics.CodeAnalysis;
 using System.Linq;
+using System.Text.Json.Serialization;
 
 namespace CS_lab.Models
 {
@@ -8,12 +9,12 @@ namespace CS_lab.Models
     {
         private readonly List<Worm> _worms;
         private readonly List<Food> _foods;
-        
+        [JsonPropertyName("worms")]
         public List<Worm> Worms
         {
             get => _worms;
         }
-
+        [JsonPropertyName("food")]
         public List<Food> Foods
         {
             get => _foods;

@@ -7,7 +7,7 @@ using WormsStrategyWebService.WormStrategy;
 namespace WormsStrategyWebService.Controllers
 {
     [ApiController]
-    [Route("[controller]")]
+    [Route("worms")]
     public class StrategyController: ControllerBase
     {
         private readonly IWormStrategy _wormStrategy;
@@ -18,16 +18,16 @@ namespace WormsStrategyWebService.Controllers
         }
         
         [HttpPost("{name}/getAction")]
-        public WormGameStep GetNextStep(string name, [FromBody] WorldGameState gameState)
+        public WormGameStep GetNextStep(string name, [FromBody] World world, int step, int run)
         {
-            var currentWorm = gameState.World.Worms.FirstOrDefault(worm => worm.Name.Equals(name));
+            var currentWorm = world.Worms.FirstOrDefault(worm => worm.Name.Equals(name));
             
             if (currentWorm == null)
             {
-                return new WormGameStep(WormStep.Nothing, Direction.Nothing);
+                return new WormGameStep();
             }
             
-            return _wormStrategy.NextStep(currentWorm, gameState.World, gameState.GameStep);
+            return _wormStrategy.NextStep(currentWorm, world, step);
         }
         
     }

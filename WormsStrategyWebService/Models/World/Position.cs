@@ -1,11 +1,15 @@
-﻿namespace WormsStrategyWebService.Models
+﻿using System.Text.Json.Serialization;
+
+namespace WormsStrategyWebService.Models
 {
     public class Position
     {
+        
         private readonly int _x;
         private readonly int _y;
+        [JsonPropertyName("x")]
         public int X { get => _x; }
-
+        [JsonPropertyName("y")]
         public int Y { get => _y; }
 
         public Position(int x, int y)

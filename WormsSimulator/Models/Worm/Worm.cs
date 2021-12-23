@@ -6,8 +6,11 @@ namespace CS_lab.Models
 {
     public class Worm
     {
+        [JsonPropertyName("name")]
         public string Name { get; }
+        [JsonPropertyName("lifeStrength")]
         public int Health { get; private set; }
+        [JsonPropertyName("position")]
         public Position Position { get; private set; }
         [JsonIgnore]
         private readonly IWormStrategy _strategy;
